@@ -41,5 +41,11 @@ public class CloudinaryConfig {
                 .imageTag(name);
     }
 
+    public String transformation(String name){
+        return cloudinary.url().transformation(new Transformation()
+                .width(400).height(400).gravity("face").radius("max").crop("crop").chain()
+                .width(200).crop("scale")).imageTag("name");
+    }
+
 
 }

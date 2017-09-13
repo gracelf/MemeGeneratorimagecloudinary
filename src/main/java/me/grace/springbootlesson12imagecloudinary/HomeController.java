@@ -22,7 +22,7 @@ public class HomeController {
     @RequestMapping("/")
     public String listActor(Model model)
     {
-        model.addAttribute("actor", actorRepo.findAll());
+        model.addAttribute("actors", actorRepo.findAll());
         return "list";
     }
 
@@ -41,6 +41,7 @@ public class HomeController {
         try {
             Map uploadResult = cloudc.upload(file.getBytes(),
                     ObjectUtils.asMap("resourcetype", "auto"));
+            //set url as headshot
             actor.setHeadshot(uploadResult.get("url").toString());
             actorRepo.save(actor);
 
